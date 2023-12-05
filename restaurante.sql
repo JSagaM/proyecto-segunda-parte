@@ -14,8 +14,23 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Volcando datos para la tabla restaurant.tb_menu: ~36 rows (aproximadamente)
-DELETE FROM `tb_menu`;
+-- Volcando datos para la tabla restaurant.tb_menu: ~34 rows (aproximadamente)
+CREATE TABLE IF NOT EXISTS `tb_menu` (
+  `id_menu` int NOT NULL AUTO_INCREMENT,
+  `id_menu_category` int NOT NULL,
+  `id_menu_amount` int NOT NULL,
+  `id_menu_type` int NOT NULL,
+  `menu_name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `menu_name_ar` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `menu_image` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `menu_featured` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `menu_description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `menu_description_ar` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `menu_price` decimal(5,2) NOT NULL,
+  `menu_related` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  PRIMARY KEY (`id_menu`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=UTF8MB4_UNICODE_CI;
+
 INSERT INTO `tb_menu` (`id_menu`, `id_menu_category`, `id_menu_amount`, `id_menu_type`, `menu_name`, `menu_name_ar`, `menu_image`, `menu_featured`, `menu_description`, `menu_description_ar`, `menu_price`, `menu_related`) VALUES
 	(1, 1, 1, 1, 'Kneffeh', 'كنافة', 'dish-kneffeh.jpg', '1', 'A type of oriental cheesecake, Kneffeh is a dessert made with cheese, kadaif and syrup flavored with orange blossom or rose water. Consumed in the Middle East, this not-so-cute sin is an absolute killer... To be consumed in moderation, of course!', 'الكنفة هي نوع من كعكة الجبن الشرقية، وهي حلوى مصنوعة من الجبن والقطايف والشراب بنكهة زهر البرتقال أو ماء الورد. تعتبر هذه الخطيئة غير اللطيفة، التي تُستهلك في الشرق الأوسط، قاتلة تمامًا... يجب استهلاكها باعتدال بالطبع!', 0.000000, '1'),
 	(2, 1, 1, 1, 'Kebbe Nayeh', 'كبة نايا', 'dish-kebbe-nayeh.jpg', '1', 'A raw meat tartare, decorated with cracked wheat (bulgur), onion, mint and spices (pepper, cumin, cinnamon). Everything is usually mashed again and served with olive oil, fresh mint and white onions and eaten with pita bread.', 'رز لحم نيئ مزين بالقمح المطحون (البرغل) والبصل والنعناع والبهارات (الفلفل والكمون والقرفة). عادة ما يتم هرس كل شيء مرة أخرى ويقدم مع زيت الزيتون والنعناع الطازج والبصل الأبيض ويؤكل مع خبز البيتا.', 0.000000, '1'),
@@ -54,15 +69,25 @@ INSERT INTO `tb_menu` (`id_menu`, `id_menu_category`, `id_menu_amount`, `id_menu
 	(35, 4, 1, 1, 'Arabic Coffee', 'قهوة عربية', 'dish-arabic-coffee.jpg', '1', 'This coffee was declared Intangible Cultural Heritage of the Arab states. The first consumption of this drink arose in Yemen, later it gained popularity and spread to other countries. To this day there are people who take it to stay awake like the pilgrims did.', 'تم إعلان هذه القهوة ضمن التراث الثقافي غير المادي للدول العربية. أول استهلاك لهذا المشروب كان في اليمن، ثم اكتسب شهرة وانتشر إلى بلدان أخرى. وإلى يومنا هذا هناك من يأخذه للسهر كما فعل الحجاج.', 0.000000, '1'),
 	(36, 4, 1, 1, 'Arak', 'اراك', 'dish-arak.jpg', '1', 'This is one of the few existing alcoholic beverages in the region. It comes from Lebanon and Syria. It is an anise drink that is distilled from grapes and left to ferment for a short time. It is produced at home for personal consumption or as a gift for loved ones. The alcohol level is high, therefore, it is known as the milk of lions.', 'هذا هو واحد من المشروبات الكحولية القليلة الموجودة في المنطقة. يأتي من لبنان وسوريا. وهو مشروب اليانسون الذي يقطر من العنب ويترك ليتخمر لمدة قصيرة. يتم إنتاجه في المنزل للاستهلاك الشخصي أو كهدية للأحباء. نسبة الكحول فيه مرتفعة ولذلك يعرف بحليب الأسود.', 0.000000, '1');
 
--- Volcando datos para la tabla restaurant.tb_menu_amount: ~3 rows (aproximadamente)
-DELETE FROM `tb_menu_amount`;
+-- Volcando datos para la tabla restaurant.tb_menu_amount: ~0 rows (aproximadamente)
+CREATE TABLE IF NOT EXISTS `tb_menu_amount` (
+  `id_menu_amount` int NOT NULL AUTO_INCREMENT,
+  `amount_name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id_menu_amount`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 INSERT INTO `tb_menu_amount` (`id_menu_amount`, `amount_name`) VALUES
 	(1, 'Solo'),
 	(2, 'Couples'),
 	(3, 'Families');
 
--- Volcando datos para la tabla restaurant.tb_menu_category: ~4 rows (aproximadamente)
-DELETE FROM `tb_menu_category`;
+-- Volcando datos para la tabla restaurant.tb_menu_category: ~0 rows (aproximadamente)
+CREATE TABLE IF NOT EXISTS `tb_menu_category` (
+  `id_menu_category` int NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id_menu_category`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 INSERT INTO `tb_menu_category` (`id_menu_category`, `category_name`) VALUES
 	(1, 'Entrée'),
 	(2, 'Main Dish'),
@@ -70,14 +95,27 @@ INSERT INTO `tb_menu_category` (`id_menu_category`, `category_name`) VALUES
 	(4, 'Drinks');
 
 -- Volcando datos para la tabla restaurant.tb_menu_type: ~0 rows (aproximadamente)
-DELETE FROM `tb_menu_type`;
+CREATE TABLE IF NOT EXISTS `tb_menu_type` (
+  `id_menu_type` int NOT NULL AUTO_INCREMENT,
+  `type_name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id_menu_type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 INSERT INTO `tb_menu_type` (`id_menu_type`, `type_name`) VALUES
 	(1, 'Table'),
 	(2, 'Delivery'),
 	(3, 'Takeout');
 
--- Volcando datos para la tabla restaurant.tb_users: ~0 rows (aproximadamente)
-DELETE FROM `tb_users`;
+-- Volcando datos para la tabla restaurant.tb_users: ~1 rows (aproximadamente)
+CREATE TABLE IF NOT EXISTS `tb_users` (
+  `id_user` int NOT NULL AUTO_INCREMENT,
+  `name` text NOT NULL,
+  `user` text NOT NULL,
+  `password` text NOT NULL,
+  `email` text NOT NULL,
+  PRIMARY KEY (`id_user`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
 INSERT INTO `tb_users` (`id_user`, `name`, `user`, `password`, `email`) VALUES
 	(1, '', '', '$2y$12$q9W43NjrlocN0JyPf1T3xuV1CRTEQw9uwiUXI6NIy0g9mWM0PQaMS', '');
 
